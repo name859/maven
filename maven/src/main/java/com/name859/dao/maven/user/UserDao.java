@@ -10,4 +10,8 @@ public interface UserDao extends JpaRepository<User, Long> {
 
 	Page<User> findByNameLike(String name, Pageable pageable);
 	
+	Page<User> findByVital(String vital, Pageable pageable);
+	
+	Page<User> findByVitalAndNameLike(String vital, String name, Pageable pageable);
+	
 }

@@ -38,7 +38,7 @@
 
 <div>&nbsp;</div>
 <div class="panel panel-default">
-	<table class="table table-condensed table-bordered table-hover">
+	<table class="table table-hover">
 		<thead>
 			<tr class="active">
 				<th class="text-center">ID</th>
@@ -53,8 +53,11 @@
 		<tbody>
 			<c:forEach var="board" items="${ list }">
 				<tr>
-					<td class="text-center active"><c:out value='${ board.boardId }' /></td>
-					<td class="text-center"><a href="<c:url value='${ baseUrl }/${ board.boardId }?${ parameter }' />"><c:out value='${ board.subject }' /></a></td>
+					<td class="text-center"><c:out value='${ board.boardId }' /></td>
+					<td>
+						<c:forEach begin="2" end="${ board.level }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
+						<a href="<c:url value='${ baseUrl }/${ board.boardId }?${ parameter }' />"><c:out value='${ board.subject }' /></a>
+					</td>
 					<td class="text-center">***</td>
 					<td class="text-center">
 						<c:if test="${ board.vital == 'Y' }"><c:out value='${ board.vital }' /></c:if>

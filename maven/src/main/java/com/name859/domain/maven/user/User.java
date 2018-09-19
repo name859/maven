@@ -16,7 +16,6 @@ import javax.persistence.TableGenerator;
 import com.name859.domain.GeneralVitalDomain;
 import com.name859.domain.maven.board.Board;
 import com.name859.domain.maven.board.BoardNice;
-import com.name859.domain.maven.category.Category;
 import com.name859.domain.maven.comment.Comment;
 
 @Entity
@@ -56,9 +55,6 @@ public class User extends GeneralVitalDomain {
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Comment> commentList = new ArrayList<Comment>();
-	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Category> categoryList = new ArrayList<Category>();
 	
 	public User() {}
 	
@@ -132,14 +128,6 @@ public class User extends GeneralVitalDomain {
 	
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
-	}
-	
-	public List<Category> getCategoryList() {
-		return categoryList;
-	}
-	
-	public void setCategoryList(List<Category> categoryList) {
-		this.categoryList = categoryList;
 	}
 	
 	@Override

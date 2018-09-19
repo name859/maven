@@ -39,6 +39,15 @@ public class Board extends GeneralVitalDomain {
 	@Column(columnDefinition = "MEDIUMTEXT", nullable = false)
 	private String content;
 	
+	@Column(name = "group_id")
+	private Long groupId;
+	
+	@Column(name = "reference_id")
+	private Long referenceId;
+	
+	private int sequence;
+	private int level;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -80,6 +89,38 @@ public class Board extends GeneralVitalDomain {
 		this.content = content;
 	}
 	
+	public Long getGroupId() {
+		return groupId;
+	}
+	
+	public void setGroupId(Long groupId) {
+		this.groupId = groupId;
+	}
+	
+	public Long getReferenceId() {
+		return referenceId;
+	}
+	
+	public void setReferenceId(Long referenceId) {
+		this.referenceId = referenceId;
+	}
+	
+	public int getSequence() {
+		return sequence;
+	}
+	
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -102,7 +143,8 @@ public class Board extends GeneralVitalDomain {
 	
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", subject=" + subject + ", content=" + content
+		return "Board [boardId=" + boardId + ", subject=" + subject + ", content=" + content + ", groupId=" + groupId
+				+ ", referenceId=" + referenceId + ", sequence=" + sequence + ", level=" + level
 				+ ", vital=" + this.getVital()
 				+ ", addTime=" + this.getAddTime() + ", modifyTime=" + this.getModifyTime() + "]";
 	}

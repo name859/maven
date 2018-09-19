@@ -2,8 +2,6 @@ package com.name859.web.maven.board.admin;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +23,7 @@ import com.name859.web.GeneralController;
 
 @Controller
 @RequestMapping("/a/board")
-public class BoardAdminController extends GeneralController<Board, BoardService, PageParam, SearchParam> {
+public class BoardController extends GeneralController<Board, BoardService, PageParam, SearchParam> {
 
 	@Autowired protected UserService userService;
 	
@@ -40,22 +38,37 @@ public class BoardAdminController extends GeneralController<Board, BoardService,
 	}
 	
 	@Override
+	public String addForm(PageParam pageParam, SearchParam searchParam, Model model) {
+		Board board = new Board();
+		board.setGroupId((long)0);
+		board.setReferenceId((long)0);
+		board.setSequence(1);
+		board.setLevel(1);
+		
+		model.addAttribute("board", board);
+		
+		return super.addForm(pageParam, searchParam, model);
+	}
+	
+	@RequestMapping(value = "/fm/{domainId}", method = RequestMethod.GET)
+	public String addForm(@PathVariable("domainId") Long domainId, PageParam pageParam, SearchParam searchParam, Model model) {
+		Board board = service.findById(domainId);
+		board.setReferenceId(board.getBoardId());
+		board.setSequence(board.getSequence() + 1);
+		board.setLevel(board.getLevel() + 1);
+		
+		model.addAttribute("board", board);
+		
+		return super.addForm(pageParam, searchParam, model);
+	}
+	
+	@Override
 	public String modify(@PathVariable("domainId") Long domainId, @ModelAttribute("domain") Board domain, PageParam pageParam, SearchParam searchParam, BindingResult bindingResult, SessionStatus sessionStatus, Model model) {
 		User user = new User();
 		user.setUserId(domain.getUser().getUserId());
 		domain.setUser(user);
 		
 		return super.modify(domainId, domain, pageParam, searchParam, bindingResult, sessionStatus, model);
-	}
-	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String listUser(HttpServletRequest request, PageParam pageParam, SearchParam searchParam, Model model) {
-		this.makeList(service.findByVitalY(pageParam, searchParam), request.getContextPath() + baseUrl +"/user", pageParam, searchParam, model);
-		this.modelAddBaseUrl("/user", model);
-		
-		model.addAttribute("parameter", param.makeParam(pageParam.getParam(), searchParam.getParam()));
-		
-		return viewDir +"/list";
 	}
 	
 }

@@ -22,6 +22,10 @@
 	<input type="hidden" name="viewRecord" value="<c:out value='${ pageParam.viewRecord }' />">
 	<input type="hidden" name="searchOption" value="<c:out value='${ searchParam.searchOption }' />">
 	<input type="hidden" name="searchValue" value="<c:out value='${ searchParam.searchValue }' />">
+	<input type="hidden" name="groupId" value="<c:out value='${ domain.groupId }' />">
+	<input type="hidden" name="referenceId" value="<c:out value='${ domain.referenceId }' />">
+	<input type="hidden" name="sequence" value="<c:out value='${ domain.sequence }' />">
+	<input type="hidden" name="level" value="<c:out value='${ domain.level }' />">
 	<input type="hidden" name="user.userId" value="<c:out value='${ domain.user.userId }' />" id="user.userId">
 	<div class="form-group">
 		<label for="subject" class="col-sm-2 control-label">SUBJECT</label>

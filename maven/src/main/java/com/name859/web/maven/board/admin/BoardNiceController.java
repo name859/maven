@@ -16,9 +16,9 @@ import com.name859.web.GeneralController;
 
 @Controller
 @RequestMapping("/a/board/nice")
-public class BoardNiceAdminController extends GeneralController<BoardNice, BoardNiceService, PageParam, SearchParam> {
+public class BoardNiceController extends GeneralController<BoardNice, BoardNiceService, PageParam, SearchParam> {
 
-	public BoardNiceAdminController() {
+	public BoardNiceController() {
 		viewDir = "/admin"+ baseUrl.substring(2, 8);
 	}
 	
@@ -33,7 +33,7 @@ public class BoardNiceAdminController extends GeneralController<BoardNice, Board
 	}
 	
 	@Override
-	public String add(BoardNice domain, BindingResult bindingResult, SessionStatus sessionStatus, Model model) {
+	public String add(BoardNice domain, PageParam pageParam, SearchParam searchParam, BindingResult bindingResult, SessionStatus sessionStatus, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("result", "fail");
 		} else {

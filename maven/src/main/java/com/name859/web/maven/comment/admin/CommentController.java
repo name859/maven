@@ -23,12 +23,12 @@ import com.name859.web.GeneralController;
 
 @Controller
 @RequestMapping("/a/comment")
-public class CommentAdminController extends GeneralController<Comment, CommentService, PageParam, SearchParam> {
+public class CommentController extends GeneralController<Comment, CommentService, PageParam, SearchParam> {
 
 	@Autowired protected BoardService boardService;
 	@Autowired protected UserService userService;
 	
-	public CommentAdminController() {
+	public CommentController() {
 		viewDir = "/admin/board"+ baseUrl.substring(2);
 	}
 	
@@ -41,10 +41,10 @@ public class CommentAdminController extends GeneralController<Comment, CommentSe
 	}
 	
 	@Override
-	public String addForm(Model model) {
+	public String addForm(PageParam pageParam, SearchParam searchParam, Model model) {
 		modelAddDomainList(model);
 		
-		return super.addForm(model);
+		return super.addForm(pageParam, searchParam, model);
 	}
 	
 	@Override

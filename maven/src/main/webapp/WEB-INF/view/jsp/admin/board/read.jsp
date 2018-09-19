@@ -84,10 +84,13 @@
 		</div>
 	</fieldset>
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="col-sm-offset-2 col-sm-8">
 			<a href="<c:url value='${ baseUrl }?${ parameter }' />" class="btn btn-default btn-lg">&nbsp;LIST&nbsp;</a>&nbsp;
 			<a href="<c:url value='${ baseUrl }/${ domain.boardId }/fm?${ parameter }' />" class="btn btn-default btn-lg"><font color="royalblue">MODIFY</font></a>&nbsp;
 			<a href="<c:url value='${ baseUrl }/${ domain.boardId }/del?${ parameter }' />" class="btn btn-default btn-lg"><font color="tomato">DELETE</font></a>
+		</div>
+		<div class="col-sm-2 text-right">
+			<a href="<c:url value='${ baseUrl }/fm/${ domain.boardId }?${ parameter }' />" class="btn btn-default btn-lg">REPLY</a>
 		</div>
 	</div>
 	<div class="form-group">

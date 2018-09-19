@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <jsp:include page="/WEB-INF/view/jsp/admin/fragment/head.jsp" />
+<style type="text/css">
+	::-webkit-scrollbar { display:none!important; }
+</style>
 <body>
 
 <div class="container">

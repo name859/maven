@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <jsp:include page="/WEB-INF/view/jsp/admin/fragment/head.jsp" />
+<style type="text/css">
+	::-webkit-scrollbar { display:none!important; }
+	
+	ul.table li ul li:nth-child(1) { width:10%; }
+	ul.table li ul li:nth-child(2) { width:10%; }
+	ul.table li ul li:nth-child(3) { width:25%; }
+	ul.table li ul li:nth-child(4) { width:25%; }
+	ul.table li ul li:nth-child(5) { width:10%; }
+	ul.table li ul li:nth-child(6) { width:20%; }
+</style>
 <body>
 
 <div class="container">
@@ -18,34 +28,34 @@
 	<div>
 
 <div>&nbsp;</div>
-<div class="panel panel-default">
-	<table class="table table-condensed table-bordered table-hover">
-		<thead>
-			<tr class="active">
-				<th class="text-center">ID</th>
-				<th class="text-center">VITAL</th>
-				<th class="text-center">ADD TIME</th>
-				<th class="text-center">MODIFY TIME</th>
-				<th class="text-center">BOARD</th>
-				<th class="text-center">USER</th>
-			</tr>
-		</thead>
-		<tbody>
+<div>
+	<ul class="table table-condensed table-bordered table-hover">
+		<li class="head active">
+			<ul>
+				<li class="text-center">ID</li>
+				<li class="text-center">VITAL</li>
+				<li class="text-center">ADD TIME</li>
+				<li class="text-center">MODIFY TIME</li>
+				<li class="text-center">BOARD</li>
+				<li class="text-center">USER</li>
+			</ul>
+		</li>
+		<li>
 			<c:forEach var="boardNice" items="${ list }">
-				<tr>
-					<td class="text-center active"><c:out value='${ boardNice.boardNiceId }' /></td>
-					<td class="text-center">
+				<ul>
+					<li class="text-center active"><c:out value='${ boardNice.boardNiceId }' /></li>
+					<li class="text-center">
 						<c:if test="${ boardNice.vital == 'Y' }"><c:out value='${ boardNice.vital }' /></c:if>
 						<c:if test="${ boardNice.vital == 'N' }"><font color="tomato"><c:out value='${ boardNice.vital }' /></font></c:if>
-					</td>
-					<td class="text-center"><fmt:formatDate value='${ boardNice.addTime }' pattern='yyyy-MM-dd HH:mm:ss' /></td>
-					<td class="text-center"><fmt:formatDate value='${ boardNice.modifyTime }' pattern='yyyy-MM-dd HH:mm:ss' /></td>
-					<td class="text-center"><c:out value='${ boardNice.board.boardId }' /></td>
-					<td class="text-center"><c:out value='${ boardNice.user.name }' /></td>
-				</tr>
+					</li>
+					<li class="text-center"><fmt:formatDate value='${ boardNice.addTime }' pattern='yyyy-MM-dd HH:mm:ss' /></li>
+					<li class="text-center"><fmt:formatDate value='${ boardNice.modifyTime }' pattern='yyyy-MM-dd HH:mm:ss' /></li>
+					<li class="text-center"><c:out value='${ boardNice.board.boardId }' /></li>
+					<li class="text-center"><c:out value='${ boardNice.user.name }' /></li>
+				</ul>
 			</c:forEach>
-		</tbody>
-	</table>
+		</li>
+	</ul>
 </div>
 
 <div class="row">

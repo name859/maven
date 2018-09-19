@@ -39,4 +39,29 @@ public class UserService extends GeneralServiceImpl<User, UserDao, PageParam, Se
 		return dao.findByNameLike("%"+ searchParam.getSearchValue() +"%", pageRequest);
 	}
 	
+	public Page<User> findByVitalY(PageParam pageParam, SearchParam searchParam) {
+		PageRequest pageRequest = new PageRequest(pageParam.getCurrentPage(), pageParam.getViewRecord(), new Sort(Direction.DESC, searchParam.getOrderBy()));
+		
+		Page<User> result = null;
+		if (searchParam.isSearch()) {	
+			switch(searchParam.getSearchOption()) {
+			case 1 :
+				result = findByVitalYAndName(searchParam, pageRequest);
+			}
+		} else {
+			result = findByVitalY(pageRequest);
+		}
+		if (result == null) throw new NullPointerException();
+		
+		return result;
+	}
+	
+	public Page<User> findByVitalYAndName(SearchParam searchParam, PageRequest pageRequest) {
+		return dao.findByVitalAndNameLike("Y", "%"+ searchParam.getSearchValue() +"%", pageRequest);
+	}
+	
+	public Page<User> findByVitalY(PageRequest pageRequest) {
+		return dao.findByVital("Y", pageRequest);
+	}
+	
 }

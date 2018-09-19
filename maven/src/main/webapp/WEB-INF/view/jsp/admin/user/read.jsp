@@ -171,11 +171,6 @@
 	</table>
 </div>
 
-<div>&nbsp;</div>
-<div class="text-center">
-	<a href="<c:url value='/a/category/user/${ domain.userId }' />" class="btn btn-default btn-lg">CATEGORY LIST</a><br><br>
-</div>
-
 	</div>
 </div>
 

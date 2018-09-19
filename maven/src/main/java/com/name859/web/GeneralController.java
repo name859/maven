@@ -92,7 +92,7 @@ public class GeneralController<D, DS extends GeneralService<D, PP, SP>, PP exten
 	}
 	
 	@RequestMapping(value = "/fm", method = RequestMethod.GET)
-	public String addForm(Model model) {
+	public String addForm(PP pageParam, SP searchParam, Model model) {
 		try {
 			model.addAttribute("domain", domainClass.newInstance());
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -104,12 +104,12 @@ public class GeneralController<D, DS extends GeneralService<D, PP, SP>, PP exten
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String add(D domain, BindingResult bindingResult, SessionStatus sessionStatus, Model model) {
+	public String add(D domain, PP pageParam, SP searchParam, BindingResult bindingResult, SessionStatus sessionStatus, Model model) {
 		if (bindingResult.hasErrors()) return viewDir +"/add";
 		service.add(domain);
 		sessionStatus.setComplete();
 		
-		return "redirect:"+ baseUrl;
+		return "redirect:"+ baseUrl +"?"+ param.makeParam(pageParam.getParam(), searchParam.getParam());
 	}
 	
 	@RequestMapping(value = "/{domainId}/fm", method = RequestMethod.GET)

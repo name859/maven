@@ -26,6 +26,10 @@ public class BoardServiceTest {
 		Board board = new Board();
 		board.setSubject("Board Subject No."+ rn);
 		board.setContent("Board Content No."+ rn);
+		board.setGroupId((long)0);
+		board.setReferenceId((long)0);
+		board.setSequence(1);
+		board.setLevel(1);
 		board.setVital("N");
 		board.setUser(user);
 		

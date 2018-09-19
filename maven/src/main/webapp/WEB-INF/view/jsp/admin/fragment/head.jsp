@@ -9,9 +9,8 @@
 <link href="<c:url value='/resources/css/bootstrap/3.3.2/bootstrap.min.css' />" rel="stylesheet">
 <link href="<c:url value='/resources/css/bootstrap/3.3.2/bootstrap-theme.min.css' />" rel="stylesheet">
 <link href="<c:url value='/resources/css/bootstrap/3.3.2/sticky-footer-navbar.css' />" rel="stylesheet">
+<link href="<c:url value='/resources/css/name859/list-table.css?ver=180915' />" rel="stylesheet">
 <style type="text/css">
-	a:link {
-		text-decoration:none;
-	}
+	a:link { text-decoration:none!important; }
 </style>
 </head>

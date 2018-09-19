@@ -20,6 +20,9 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="<c:url value='/a/user' />">USER LIST</a></li>
 						<li><a href="<c:url value='/a/user/fm' />">USER ADD</a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header">ex VITAL Y</li>
+						<li><a href="<c:url value='/a/user/vitaly' />">USER LIST</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -27,9 +30,6 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="<c:url value='/a/board' />">BOARD LIST</a></li>
 						<li><a href="<c:url value='/a/board/fm' />">BOARD ADD</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header">ex USER PAGE</li>
-						<li><a href="<c:url value='/a/board/user' />">BOARD LIST</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
